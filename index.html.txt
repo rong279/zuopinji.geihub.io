@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李华 - 创意总监 & 全栈开发者</title>
+    <link href="https://fonts.font.im/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #2A2A2A;
+            --accent-color: #FF4D5A;
+            --text-light: #FFFFFF;
+        }
+
+        body {
+            background: var(--primary-color);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7)),
+                        url('https://source.unsplash.com/random/1920x1080') center/cover;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #FF4D5A, #FF8E4A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section {
+            padding: 100px 10%;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-bar {
+            background: rgba(255,255,255,0.1);
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--accent-color);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <h6 class="subtitle">创新引领未来</h6>
+            <h1>李 华</h1>
+            <p class="tagline">数字创意总监 & 全栈开发者</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn">立即联系</a>
+                <a href="#portfolio" class="btn-outline">查看作品</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section" id="about">
+        <h2 class="section-title">关于我</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>拥有10年数字产品开发经验的全栈创意专家，擅长将前沿技术与艺术设计完美融合...</p>
+            </div>
+            <div class="skills">
+                <div class="skill-item">
+                    <h4>UI/UX 设计</h4>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                <!-- 更多技能条 -->
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="portfolio">
+        <h2 class="section-title">精选作品</h2>
+        <div class="portfolio-grid">
+            <div class="card">
+                <img src="project1.jpg" alt="项目1">
+                <h3>智能家居生态系统</h3>
+                <p>革命性的物联网解决方案...</p>
+            </div>
+            <!-- 更多项目卡片 -->
+        </div>
+    </section>
+
+    <script>
+        // 滚动动画
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('.card, .skill-progress');
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if(elementTop < window.innerHeight - 100) {
+                    el.style.opacity = 1;
+                    if(el.classList.contains('skill-progress')) {
+                        el.style.width = el.getAttribute('data-width');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
